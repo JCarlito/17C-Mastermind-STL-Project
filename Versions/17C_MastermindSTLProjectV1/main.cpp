@@ -268,10 +268,11 @@ void hint(string code, string guess, int& rr, int& rw) {
         }
     }
 
-    for (map<char, int>::const_iterator kv = codeMap.begin(); kv != codeMap.end(); kv++) {
-        map<char, int>::iterator it = guessMap.find(kv->first);
-        if (it != guessMap.end()) {
-            rw += min(kv->second, it->second);
+    for (map<char, int>::const_iterator codeKV = codeMap.begin();
+            codeKV != codeMap.end(); codeKV++) {
+        map<char, int>::iterator guessIt = guessMap.find(codeKV->first);
+        if (guessIt != guessMap.end()) {
+            rw += min(codeKV->second, guessIt->second);
         }
     }
 }

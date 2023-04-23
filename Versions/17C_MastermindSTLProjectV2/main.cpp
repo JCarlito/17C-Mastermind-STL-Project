@@ -96,7 +96,7 @@ int main(int argc, char** argv) {
             cout << endl;
 
             //Display board
-            displayBoard(hints, guesses);
+            displayBoard(hints, guesses, usedColors);
 
             //Store User's guess
             cout << endl;
@@ -123,7 +123,7 @@ int main(int argc, char** argv) {
         hints.push(make_pair(rrTemp, rwTemp));
 
         //Display board
-        displayBoard(hints, guesses);
+        displayBoard(hints, guesses, usedColors);
 
         //Display outro message
         outro(code, guess, nColors);
@@ -162,7 +162,7 @@ int main(int argc, char** argv) {
             cout << endl;
 
             //Display board
-            displayBoard(hints, practiceGuesses);
+            displayBoard(hints, practiceGuesses, usedColors);
 
             //Store User's guess
             cout << endl;
@@ -201,7 +201,7 @@ int main(int argc, char** argv) {
         hints.push(make_pair(rrTemp, rwTemp));
 
         //Display board
-        displayBoard(hints, practiceGuesses);
+        displayBoard(hints, practiceGuesses, usedColors);
 
         //Display outro message
         outro(code, guess, nColors);
@@ -364,11 +364,11 @@ void hint(string code, string guess, int& rr, int& rw) {
         }
     }
 
-    for (map<char, int>::const_iterator kv = codeMap.begin(); kv != codeMap.end(); kv++) {
-        map<char, int>::iterator it = guessMap.find(kv->first);
-        if (it != guessMap.end()) {
-
-            rw += min(kv->second, it->second);
+    for (map<char, int>::const_iterator codeKV = codeMap.begin();
+            codeKV != codeMap.end(); codeKV++) {
+        map<char, int>::iterator guessIt = guessMap.find(codeKV->first);
+        if (guessIt != guessMap.end()) {
+            rw += min(codeKV->second, guessIt->second);
         }
     }
 }
