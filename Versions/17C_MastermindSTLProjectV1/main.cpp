@@ -268,10 +268,14 @@ void hint(string code, string guess, int& rr, int& rw) {
         }
     }
 
+    // iterate through the codeMap
     for (map<char, int>::const_iterator codeKV = codeMap.begin();
             codeKV != codeMap.end(); codeKV++) {
+        // get the guessMap iterator that points to the current codeKV 'key'
         map<char, int>::iterator guessIt = guessMap.find(codeKV->first);
+        // if the codeKV key was found in guessMap
         if (guessIt != guessMap.end()) {
+            // take the minimum value out of the two values at that 'key'
             rw += min(codeKV->second, guessIt->second);
         }
     }
