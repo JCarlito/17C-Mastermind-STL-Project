@@ -361,7 +361,6 @@ string setCode(int n, char dup) {
     //Initialize variables
 
     // List to be shuffled
-    //    list<char> gen = {'0', '1', '2', '3', '4', '5', '6', '7'};
     list<char> gen(8);
     generate(gen.begin(), gen.end(), genList);
     shuffle(gen);
